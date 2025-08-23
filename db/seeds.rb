@@ -4,6 +4,17 @@
 #
 # Example:
 #
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+password = SecureRandom.alphanumeric(12)
+email = ENV['ADMIN_EMAIL']
+
+User.create!(
+  email: email,
+  password: password,
+  password_confirmation: password,
+  confirmed_at: Time.current,
+  confirmation_sent_at: Time.current - 1.hour
+)
+
+p '====== User Created ======'
+p "Email: #{email}"
+p "Password: #{password}"
