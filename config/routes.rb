@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users, path: "admin", skip: [ :registrations ]
+  devise_for :users,
+    path: "admin",
+    skip: [ :registrations ],
+    controllers: {
+      sessions: "admin/users/sessions",
+      passwords: "admin/users/passwords",
+      confirmations: "admin/users/confirmations",
+      unlocks: "admin/users/unlocks"
+    }
 
   namespace :admin do
     devise_scope :user do
@@ -7,8 +15,19 @@ Rails.application.routes.draw do
       patch "profile", to: "users/registrations#update", as: :update_registration
       put "profile", to: "users/registrations#update"
       delete "profile", to: "users/registrations#destroy"
+
+      patch "profile/two_factor", to: "two_factor#update", as: :update_user_two_factor
+      delete "profile/two_factor", to: "two_factor#destroy", as: :disable_user_two_factor
+      post "profile/regenerate_backup_codes", to: "two_factor#regenerate_backup_codes", as: :regenerate_user_backup_codes
+      post "profile/two_factor/enable", to: "two_factor#create", as: :enable_two_factor
+      delete "profile/two_factor/disable", to: "two_factor#destroy", as: :disable_two_factor
+
+      get "two_factor", to: "users/sessions#two_factor", as: :two_factor
+      post "two_factor/verify", to: "users/sessions#two_factor_verify", as: :two_factor_verify
     end
   end
+
+
 
   namespace :admin do
     root "home#index"

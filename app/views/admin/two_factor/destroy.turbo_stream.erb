@@ -1,0 +1,7 @@
+<%= turbo_stream.update "two-factor-section" do %>
+  <%= render 'admin/users/registrations/two_factor_status' %>
+<% end %>
+
+<%= turbo_stream.update "flash" do %>
+  <%= render 'shared/flash' %>
+<% end %>

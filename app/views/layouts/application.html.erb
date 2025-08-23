@@ -18,15 +18,9 @@
     </head>
 
     <body>
-    <header>
-      <nav>
-      <% if defined?(current_user) && current_user %>
-        <% logout_path = respond_to?(:destroy_user_session_path) ? destroy_user_session_path : "/logout" %>
-        <%= button_to "Logout", logout_path, method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: "logout-button" %>
-      <% end %>
-      </nav>
-    </header>
-
-    <%= yield %>
+      <div id="flash">
+        <%= render 'shared/flash' %>
+      </div>
+      <%= yield %>
     </body>
   </html>
