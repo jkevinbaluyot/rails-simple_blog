@@ -2,6 +2,15 @@ Rails.application.routes.draw do
   devise_for :users, path: "admin", skip: [ :registrations ]
 
   namespace :admin do
+    devise_scope :user do
+      get "profile/edit", to: "users/registrations#edit", as: :edit_registration
+      patch "profile", to: "users/registrations#update", as: :update_registration
+      put "profile", to: "users/registrations#update"
+      delete "profile", to: "users/registrations#destroy"
+    end
+  end
+
+  namespace :admin do
     root "home#index"
   end
 
