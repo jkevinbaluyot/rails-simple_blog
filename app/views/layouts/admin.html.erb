@@ -16,11 +16,11 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     </head>
-
-    <body>
-      <div id="flash">
-        <%= render 'shared/flash' %>
-      </div>
-      <%= yield %>
+   <body>
+    <div id="flash">
+      <%= render 'shared/flash' %>
+    </div>
+    
+    <%= yield %>
     </body>
   </html>

@@ -1,0 +1,3 @@
+EMAIL_SENDER=email@sample.com
+DEVISE_SECRET= #$ rails secret
+ADMIN_EMAIL=admin@sample.com

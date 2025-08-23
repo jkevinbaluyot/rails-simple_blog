@@ -1,0 +1,45 @@
+<% if current_user.otp_required_for_login? %>
+  <div class="alert alert-success">
+    <strong>✓ Two-factor authentication is enabled</strong>
+  </div>
+
+  <div class="text-center mb-6">
+      <div class="bg-white p-4 rounded-lg border border-gray-200 inline-block">
+          <%= raw current_user.two_factor_qr_code %>
+      </div>
+  </div>
+  
+  <h4 class="mt-4">Backup Codes</h4>
+  <div class="alert alert-warning">
+    <strong>Important!</strong> Save these backup codes in a secure place. Each code can be used only once.
+  </div>
+  
+  <div class="bg-light p-3 mb-3">
+    <% current_user.otp_backup_codes.each do |code| %>
+      <code class="d-block mb-1"><%= code %></code>
+    <% end %>
+  </div>
+  
+  <div class="d-flex gap-2">
+    <%= button_to "Regenerate Backup Codes", admin_regenerate_user_backup_codes_path, 
+                  method: :post, 
+                  class: "btn btn-warning",
+                  form: { data: { turbo_confirm: "Are you sure? This will invalidate all existing backup codes." } } %>
+                  
+    <%= button_to "Disable 2FA", admin_disable_user_two_factor_path, 
+                  method: :delete, 
+                  class: "btn btn-danger",
+                  form: { data: { turbo_confirm: "Are you sure you want to disable two-factor authentication?" } } %>
+  </div>
+  
+<% else %>
+  <div class="alert alert-info">
+    <strong>Two-factor authentication is not enabled</strong>
+    <p class="mb-0">Add an extra layer of security to your account by enabling two-factor authentication.</p>
+  </div>
+  
+  <%= button_to "Enable Two-Factor Authentication", admin_enable_two_factor_path, 
+                method: :post, 
+                class: "btn btn-primary" %>
+
+<% end %>

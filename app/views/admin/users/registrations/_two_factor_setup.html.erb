@@ -1,0 +1,31 @@
+<div class="mt-4 p-3 bg-light rounded">
+  <h4>Setup Two-Factor Authentication</h4>
+  
+  <div class="alert alert-info">
+    <p>Scan the QR code with your authenticator app</p>
+  </div>
+
+  <div class="text-center mb-3">
+    <%= raw RQRCode::QRCode.new(current_user.two_factor_qr_code_uri).as_svg(module_size: 4) %>
+  </div>
+
+  <p class="text-center mb-3">
+    Or enter this secret key manually: 
+    <code class="font-monospace"><%= current_user.otp_secret %></code>
+  </p>
+
+  <%= form_with url: admin_update_user_two_factor_path, method: :patch do |f| %>
+    <div class="mb-3">
+      <%= f.label :otp_attempt, "Enter the code from your authenticator app", class: "form-label" %>
+      <%= f.text_field :otp_attempt, class: "form-control", autocomplete: "off", required: true %>
+    </div>
+    
+    <div class="d-flex gap-2">
+      <%= f.submit "Verify and Enable", class: "btn btn-success" %>
+      <%= button_to "Cancel", admin_disable_user_two_factor_path, 
+                    method: :delete, 
+                    class: "btn btn-secondary",
+                    form: { data: { turbo_confirm: "Cancel 2FA setup?" } } %>
+    </div>
+  <% end %>
+</div>
