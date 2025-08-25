@@ -4,7 +4,11 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = if current_user.present?
+      Article.all
+    else
+      Article.published
+    end
   end
 
   # GET /articles/1 or /articles/1.json
@@ -62,6 +66,10 @@ class ArticlesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_article
       @article = Article.friendly.find(params[:id])
+
+      if current_user.blank? && !@article&.published?
+        render plain: "This is unpublished.", status: :unauthorized
+      end
     end
 
     # Only allow a list of trusted parameters through.

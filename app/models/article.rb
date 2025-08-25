@@ -6,6 +6,12 @@ class Article < ApplicationRecord
 
   validate :slug_must_be_valid
 
+  scope :published, -> { where.not(published_at: nil).where("published_at <= ?", Time.zone.now) }
+
+  def published?
+    published_at.present? && published_at <= Time.zone.now
+  end
+
   private
 
   def generate_slug
