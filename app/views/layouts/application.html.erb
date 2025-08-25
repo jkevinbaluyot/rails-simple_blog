@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Rails Simple Blog" %></title>
+    <title><%= yield(:meta_title) || "Rails Simple Blog" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -15,6 +15,7 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag "marksmith" %>
     </head>
 
     <body>
