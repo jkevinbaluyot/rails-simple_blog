@@ -37,4 +37,4 @@
 .env
 
 /node_modules
-./vendor/javascript/
+/vendor/javascript/
