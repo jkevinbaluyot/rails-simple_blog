@@ -1,0 +1,27 @@
+{
+  "name": "rails-simple_blog",
+  "version": "1.0.0",
+  "description": "### Package - [bin/importmap pin @avo-hq/marksmith](https://github.com/avo-hq/marksmith)",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "@avo-hq/marksmith": "^0.4.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkevinbaluyot/rails-simple_blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jkevinbaluyot/rails-simple_blog/issues"
+  },
+  "homepage": "https://github.com/jkevinbaluyot/rails-simple_blog#readme"
+}
