@@ -25,6 +25,11 @@
   </p>
 
   <p>
+    <strong>Category:</strong>
+    <%= article.category.name %>
+  </p>
+
+  <p>
     <strong>Tags:</strong>
     <%= article.tags.map(&:name).join(", ") %>
   </p>

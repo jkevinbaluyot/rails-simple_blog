@@ -25,6 +25,11 @@
     <%= form.label :published_at, style: "display: block" %>
     <%= form.datetime_field :published_at %>
   </div>
+  <div>
+    <%= form.label :category_id, "Category", style: "display: block" %>
+    <%= form.collection_select(:category_id, Category.all, :id, :name, include_blank: true, prompt: "Select") %>
+  </div>
+  
 
   <h3>Select Tags:</h3>
   <%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |cb| %>
