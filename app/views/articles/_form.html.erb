@@ -20,7 +20,18 @@
     <%= form.label :content_html, style: "display: block" %>
     <%= form.marksmith :content_html %>
   </div>
-  
+
+  <div>
+    <%= form.label :published_at, style: "display: block" %>
+    <%= form.datetime_field :published_at %>
+  </div>
+
+  <div>
+    <%= form.label :article_tag_id, "Tag", style: "display: block" %>
+    <%= form.collection_select :article_tag_id, ArticleTag.all, :id, :name, include_blank: true %>
+
+  <h3>Meta</h3>
+
   <div>
     <%= form.label :meta_title, style: "display: block" %>
     <%= form.text_field :meta_title %>
@@ -34,11 +45,6 @@
   <div>
     <%= form.label :meta_keywords, style: "display: block" %>
     <%= form.text_field :meta_keywords %>
-  </div>
-
-  <div>
-    <%= form.label :published_at, style: "display: block" %>
-    <%= form.datetime_field :published_at %>
   </div>
 
   <div>

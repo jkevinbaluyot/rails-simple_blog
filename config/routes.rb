@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tags
   resources :articles
   devise_for :users,
     path: "admin",

@@ -2,6 +2,8 @@ class Article < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: :slugged
 
+  belongs_to :article_tag, optional: true
+
   before_validation :generate_slug
 
   validate :slug_must_be_valid
