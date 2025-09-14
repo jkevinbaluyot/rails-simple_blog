@@ -26,9 +26,13 @@
     <%= form.datetime_field :published_at %>
   </div>
 
-  <div>
-    <%= form.label :article_tag_id, "Tag", style: "display: block" %>
-    <%= form.collection_select :article_tag_id, ArticleTag.all, :id, :name, include_blank: true %>
+  <h3>Select Tags:</h3>
+  <%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |cb| %>
+    <div>
+      <%= cb.check_box %>
+      <%= cb.label %>
+    </div>
+  <% end %>
 
   <h3>Meta</h3>
 

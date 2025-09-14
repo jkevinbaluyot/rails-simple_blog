@@ -25,6 +25,11 @@
   </p>
 
   <p>
+    <strong>Tags:</strong>
+    <%= article.tags.map(&:name).join(", ") %>
+  </p>
+
+  <p>
     <strong>Meta title:</strong>
     <%= article.meta_title %>
   </p>
