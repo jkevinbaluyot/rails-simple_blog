@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   resources :articles
   devise_for :users,
     path: "admin",
-    skip: [ :registrations ],
     controllers: {
       sessions: "admin/users/sessions",
       passwords: "admin/users/passwords",
       confirmations: "admin/users/confirmations",
-      unlocks: "admin/users/unlocks"
+      unlocks: "admin/users/unlocks",
+      registrations: "admin/users/registrations"
     }
 
   namespace :admin do

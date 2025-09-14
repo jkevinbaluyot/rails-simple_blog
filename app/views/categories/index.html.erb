@@ -8,9 +8,12 @@
   <% @categories.each do |category| %>
     <%= render category %>
 
-    <%= link_to "Edit this category", edit_category_path(category) %>
-    <%= button_to "Destroy this category", category, method: :delete %>
+    <% if current_user.present? %>
+      <%= link_to "Edit this category", edit_category_path(category) %>
+      <%= button_to "Destroy this category", category, method: :delete %>
+    <% end %>
   <% end %>
 </div>
-
-<%= link_to "New category", new_category_path %>
+<% if current_user.present? %>
+  <%= link_to "New category", new_category_path %>
+<% end %>

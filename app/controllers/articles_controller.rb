@@ -5,9 +5,9 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     @articles = if current_user.present?
-      Article.with_tags.all
+      Article.with_tags.with_category.all
     else
-      Article.with_tags.published
+      Article.with_tags.with_category.published
     end
   end
 

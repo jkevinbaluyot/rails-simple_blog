@@ -11,6 +11,7 @@ class Article < ApplicationRecord
 
   scope :published, -> { where.not(published_at: nil).where("published_at <= ?", Time.zone.now) }
   scope :with_tags, -> { includes(:tags) }
+  scope :with_category, -> { includes(:category) }
 
   before_destroy :remove_tags
 
