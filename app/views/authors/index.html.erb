@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Authors" %>
+
+<h1>Authors</h1>
+
+<div id="authors">
+  <% @authors.each do |author| %>
+    <%= render author %>
+    <% if current_user.present? %>
+      <%= link_to "Edit this author", edit_author_path(author) %> |
+      <%= button_to "Destroy this author", author, method: :delete %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "New author", new_author_path %>

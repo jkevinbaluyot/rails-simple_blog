@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Web settings" %>
+
+<h1>Web settings</h1>
+
+<div id="web_settings">
+  <% @web_settings.each do |web_setting| %>
+    <%= render web_setting %>
+    <p>
+      <%= link_to "Show this web setting", web_setting %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New web setting", new_web_setting_path %>

@@ -20,7 +20,30 @@
     <%= form.label :content_html, style: "display: block" %>
     <%= form.marksmith :content_html %>
   </div>
-  
+
+  <div>
+    <%= form.label :published_at, style: "display: block" %>
+    <%= form.datetime_field :published_at %>
+  </div>
+  <div>
+    <%= form.label :category_id, "Category", style: "display: block" %>
+    <%= form.collection_select(:category_id, Category.all, :id, :name, include_blank: true, prompt: "Select") %>
+  </div>
+
+  <h3>Author</h3>
+  <%= form.collection_select(:author_id, Author.all, :id, :name, include_blank: true, prompt: "Select") %>
+
+
+  <h3>Select Tags:</h3>
+  <%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |cb| %>
+    <div>
+      <%= cb.check_box %>
+      <%= cb.label %>
+    </div>
+  <% end %>
+
+  <h3>Meta</h3>
+
   <div>
     <%= form.label :meta_title, style: "display: block" %>
     <%= form.text_field :meta_title %>
@@ -34,11 +57,6 @@
   <div>
     <%= form.label :meta_keywords, style: "display: block" %>
     <%= form.text_field :meta_keywords %>
-  </div>
-
-  <div>
-    <%= form.label :published_at, style: "display: block" %>
-    <%= form.datetime_field :published_at %>
   </div>
 
   <div>

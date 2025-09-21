@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_08_24_025443) do
+ActiveRecord::Schema[7.2].define(version: 2025_09_21_032526) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,8 +52,33 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_24_025443) do
     t.datetime "published_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.bigint "author_id"
+    t.index ["author_id"], name: "index_articles_on_author_id"
+    t.index ["category_id"], name: "index_articles_on_category_id"
     t.index ["published_at"], name: "index_articles_on_published_at"
     t.index ["slug"], name: "index_articles_on_slug"
+  end
+
+  create_table "articles_tags", force: :cascade do |t|
+    t.bigint "article_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_articles_tags_on_article_id"
+    t.index ["tag_id"], name: "index_articles_tags_on_tag_id"
+  end
+
+  create_table "authors", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -65,6 +90,12 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_24_025443) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,12 +121,23 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_24_025443) do
     t.string "otp_secret"
     t.boolean "otp_required_for_login", default: false
     t.text "otp_backup_codes", default: [], array: true
+    t.string "name"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  create_table "web_settings", force: :cascade do |t|
+    t.string "site_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "articles", "authors"
+  add_foreign_key "articles", "categories"
+  add_foreign_key "articles_tags", "articles"
+  add_foreign_key "articles_tags", "tags"
 end

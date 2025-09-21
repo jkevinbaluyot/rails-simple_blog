@@ -2,6 +2,30 @@
 <% content_for(:head) do %>
   <meta name="description" content="<%= strip_tags(article.meta_description).squish %>">
   <meta name="keywords" content="<%= strip_tags(article.meta_keywords).squish %>">
+  
+  <script type="application/ld+json">
+    <%= raw({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": @article.title,
+      "author": {
+        "@type": "Person",
+        "name": @article&.author&.name
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "", # TODO: Add your site name here
+      },
+      "datePublished": @article.published_at&.iso8601,
+      "dateModified": @article.updated_at&.iso8601,
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": article_url(@article)
+      },
+      "articleSection": @article.category.name,
+      "keywords": @article.tags.map(&:name)
+    }.to_json) %>
+  </script>
 <% end %>
 
 <% content_for(:meta_title) do %>
@@ -9,39 +33,13 @@
 <% end %>
 
 <div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
+  <article>
+    <h1><%= article.title %></h1>
+    <p><em><%= article.published_at %></em></p>
 
-  <p>
-    <strong>Content html:</strong>
     <%== marksmithed article.content_html %>
-  </p>
 
-  <p>
-    <strong>Slug:</strong>
-    <%= article.slug %>
-  </p>
-
-  <p>
-    <strong>Meta title:</strong>
-    <%= article.meta_title %>
-  </p>
-
-  <p>
-    <strong>Meta description:</strong>
-    <%= article.meta_description %>
-  </p>
-
-  <p>
-    <strong>Meta keywords:</strong>
-    <%= article.meta_keywords %>
-  </p>
-
-  <p>
-    <strong>Published at:</strong>
-    <%= article.published_at %>
-  </p>
-
+    <p><strong>Category:</strong> <%= article.category.name %></p>
+    <p><strong>Tags:</strong> <%= article.tags.map(&:name).join(", ") %></p>
+  </article>
 </div>

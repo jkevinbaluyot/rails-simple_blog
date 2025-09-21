@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Tags" %>
+
+<h1>Tags</h1>
+
+<div id="tags">
+  <% @tags.each do |tag| %>
+    <%= render tag %>
+
+    <% if current_user.present? %>
+      <%= link_to "Edit this tag", edit_tag_path(tag) %>
+      <%= button_to "Destroy this tag", tag, method: :delete %>
+    <% end %>
+  <% end %>
+</div>
+
+<% if current_user.present? %>
+  <%= link_to "New tag", new_tag_path %>
+<% end %>

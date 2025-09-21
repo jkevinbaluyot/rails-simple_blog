@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
+  resources :web_settings, only: %i[edit update]
+  resources :authors, except: [:show]
+  resources :categories, except: [:show]
+  resources :tags, except: [:show]
   resources :articles
   devise_for :users,
     path: "admin",
-    skip: [ :registrations ],
     controllers: {
       sessions: "admin/users/sessions",
       passwords: "admin/users/passwords",
       confirmations: "admin/users/confirmations",
-      unlocks: "admin/users/unlocks"
+      unlocks: "admin/users/unlocks",
+      registrations: "admin/users/registrations"
     }
 
   namespace :admin do

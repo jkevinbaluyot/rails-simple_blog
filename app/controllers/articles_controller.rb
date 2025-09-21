@@ -5,9 +5,9 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     @articles = if current_user.present?
-      Article.all
+      Article.with_tags.with_category.all
     else
-      Article.published
+      Article.with_tags.with_category.published
     end
   end
 
@@ -74,6 +74,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :content_html, :meta_title, :meta_description, :meta_keywords, :published_at)
+      params.require(:article).permit(:title, :content_html, :meta_title, :meta_description, :meta_keywords, :published_at, :category_id, :author_id, tag_ids: [])
     end
 end
