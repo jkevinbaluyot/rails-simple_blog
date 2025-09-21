@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :authors, except: [:show]
   resources :categories, except: [:show]
   resources :tags, except: [:show]
   resources :articles

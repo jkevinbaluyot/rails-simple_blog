@@ -3,6 +3,7 @@ class Article < ApplicationRecord
   friendly_id :title, use: :slugged
 
   has_and_belongs_to_many :tags
+  belongs_to :author
   belongs_to :category, optional: true
   
   before_validation :generate_slug

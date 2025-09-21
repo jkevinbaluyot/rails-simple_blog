@@ -29,7 +29,10 @@
     <%= form.label :category_id, "Category", style: "display: block" %>
     <%= form.collection_select(:category_id, Category.all, :id, :name, include_blank: true, prompt: "Select") %>
   </div>
-  
+
+  <h3>Author</h3>
+  <%= form.collection_select(:author_id, Author.all, :id, :name, include_blank: true, prompt: "Select") %>
+
 
   <h3>Select Tags:</h3>
   <%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |cb| %>

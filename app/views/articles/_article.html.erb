@@ -8,10 +8,9 @@
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": @article.title,
-      "description": '', # TODO: Add article description
       "author": {
         "@type": "Person",
-        "name": User.first&.name
+        "name": @article&.author&.name
       },
       "publisher": {
         "@type": "Organization",
