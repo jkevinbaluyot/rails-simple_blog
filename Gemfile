@@ -19,6 +19,8 @@ gem "jbuilder"
 
 gem "dotenv"
 
+gem "sassc-rails"
+
 gem "devise"
 gem "rotp" # For generating and verifying TOTP codes
 gem "rqrcode" # For generating QR codes
