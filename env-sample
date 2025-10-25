@@ -4,3 +4,5 @@ ADMIN_EMAIL=admin@sample.com
 FORBIDDEN_SLUG='articles,article,blogs,blog,admin,profile,tags,tag,users,user,categories,category'
 AUTHOR_NAME=Name Here
 SITE_NAME=Site name here
+
+RAILS_SERVE_STATIC_FILES='' #Put this at test and production. Ignore at development
