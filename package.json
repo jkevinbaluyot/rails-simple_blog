@@ -8,10 +8,12 @@
     "test": "test"
   },
   "dependencies": {
-    "@avo-hq/marksmith": "^0.4.7"
+    "@avo-hq/marksmith": "^0.4.7",
+    "bootstrap": "^5.3.8"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "",
+    "build:watch": ""
   },
   "repository": {
     "type": "git",

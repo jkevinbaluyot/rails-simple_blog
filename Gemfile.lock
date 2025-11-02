@@ -134,6 +134,12 @@ GEM
     jbuilder (2.14.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
+    jquery-rails (4.6.1)
+      rails-dom-testing (>= 1, < 3)
+      railties (>= 4.2.0)
+      thor (>= 0.14, < 2.0)
+    jsbundling-rails (1.3.1)
+      railties (>= 6.0.0)
     json (2.13.2)
     language_server-protocol (3.17.0.5)
     lint_roller (1.1.0)
@@ -171,6 +177,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.6.1-x86_64-linux)
+    popper_js (2.11.8)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -326,8 +333,11 @@ DEPENDENCIES
   friendly_id (~> 5.5.0)
   importmap-rails
   jbuilder
+  jquery-rails
+  jsbundling-rails (~> 1.3)
   marksmith
   pg (~> 1.1)
+  popper_js
   puma (>= 5.0)
   rails (~> 7.2.2, >= 7.2.2.2)
   rotp
