@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  resources :projects, except: [ :show ]
   resources :web_settings, only: %i[edit update]
-  resources :authors, except: [:show]
-  resources :categories, except: [:show]
-  resources :tags, except: [:show]
+  resources :authors, except: [ :show ]
+  resources :categories, except: [ :show ]
+  resources :tags, except: [ :show ]
   resources :articles
   devise_for :users,
     path: "admin",
