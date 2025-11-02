@@ -1,0 +1,12 @@
+<% content_for :title, "Editing certification" %>
+
+<h1>Editing certification</h1>
+
+<%= render "form", certification: @certification %>
+
+<br>
+
+<div>
+  <%= link_to "Show this certification", @certification %> |
+  <%= link_to "Back to certifications", certifications_path %>
+</div>
