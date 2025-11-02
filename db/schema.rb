@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_09_21_032526) do
+ActiveRecord::Schema[7.2].define(version: 2025_11_02_051407) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -92,8 +92,31 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_21_032526) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects_technologies", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "technology_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_projects_technologies_on_project_id"
+    t.index ["technology_id"], name: "index_projects_technologies_on_technology_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "technologies", force: :cascade do |t|
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -140,4 +163,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_09_21_032526) do
   add_foreign_key "articles", "categories"
   add_foreign_key "articles_tags", "articles"
   add_foreign_key "articles_tags", "tags"
+  add_foreign_key "projects_technologies", "projects"
+  add_foreign_key "projects_technologies", "technologies"
 end

@@ -5,7 +5,7 @@ class Article < ApplicationRecord
   has_and_belongs_to_many :tags
   belongs_to :author
   belongs_to :category, optional: true
-  
+
   before_validation :generate_slug
 
   validate :slug_must_be_valid

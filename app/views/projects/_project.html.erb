@@ -1,0 +1,30 @@
+<div id="<%= dom_id project %>">
+  <p>
+    <strong>Title:</strong>
+    <%= project.title %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= project.description %>
+  </p>
+
+  <p>
+    <strong>Url:</strong>
+    <%= project.url %>
+  </p>
+
+  <p>
+    <strong>Technologies: </strong>
+
+    <% project.technologies.each do |tech| %>
+      <%= tech.title%>
+    <% end %>
+  </p>
+
+  <% if current_user.present? %>
+    <%= link_to "Edit this project", edit_project_path(project) %>
+    <%= button_to "Destroy this project", project, method: :delete %>
+  <% end %>
+  
+</div>
