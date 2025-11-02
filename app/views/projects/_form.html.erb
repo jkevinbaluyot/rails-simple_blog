@@ -26,6 +26,15 @@
     <%= form.text_field :url %>
   </div>
 
+
+  <h3>Select Technologies:</h3>
+  <%= form.collection_check_boxes(:technology_ids, Technology.all, :id, :title) do |cb| %>
+    <div>
+      <%= cb.check_box %>
+      <%= cb.label %>
+    </div>
+  <% end %>
+
   <div>
     <%= form.submit %>
   </div>
