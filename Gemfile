@@ -71,3 +71,5 @@ end
 gem "jsbundling-rails", "~> 1.3"
 gem "jquery-rails"
 gem "popper_js"
+gem "sassc-rails"
+gem "sassc"
