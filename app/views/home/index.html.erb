@@ -5,8 +5,10 @@
     </div>
 
     <div class="mt-4">
-        <% [0..3].each do |article| %>
-           <%= render "article_card", article: article %>
+        <% array = (0..10).to_a %>
+        <% array.each_with_index do |article, index| %>
+           <% last_index = array.length - 1 == index %>
+           <%= render "article_card", article: article, last_index: last_index %>
         <% end %>
     </div>
 </div>
