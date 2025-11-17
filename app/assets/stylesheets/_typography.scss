@@ -34,6 +34,16 @@
     background-color: $border-color !important;
 }
 
+.bg-card{
+    background-color: $card !important;
+}
+
+.bg-hover-pink{
+    &:hover{
+        background-color: $color-pink !important;
+    }
+}
+
 .text-xs {
     font-size: .75rem;
     line-height: 1rem;
@@ -71,4 +81,19 @@
 .py-6 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+}
+
+.p-6 {
+    padding: 1.5rem;
+}
+
+.text-pink{
+    color: $color-pink;
+}
+
+
+.spacing-y{
+    > *:not(:first-child) {
+        margin-top: 1rem;
+    }
 }

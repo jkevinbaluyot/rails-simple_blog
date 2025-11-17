@@ -6,13 +6,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 bg-muted/50 border p-1">
             <li class="nav-item">
-                <a class="px-3 py-1 nav-link text-sm fw-bold" aria-current="page" href="#">Blog</a>
+                <%= link_to 'Blog', root_path, class: 'px-3 py-1 nav-link text-sm fw-bold' %>
             </li>
             <li class="nav-item">
-                <a class="px-3 py-1 nav-link text-sm fw-bold" href="#">Archive</a>
+                <%= link_to 'Archive', archive_path, class: 'px-3 py-1 nav-link text-sm fw-bold' %>
             </li>
             <li class="nav-item">
-                <a class="px-3 py-1 nav-link text-sm fw-bold" href="#">Categories</a>
+                <%= link_to 'Categories', categories_path, class: 'px-3 py-1 nav-link text-sm fw-bold' %>
             </li>
             <li class="nav-item">
                 <a class="px-3 py-1 nav-link text-sm fw-bold" href="#">Tags</a>
