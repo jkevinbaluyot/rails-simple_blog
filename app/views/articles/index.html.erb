@@ -1,14 +1,38 @@
 <% content_for :title, "Articles" %>
 
 <main class="container flex-grow-1">
-  <h1>Articles</h1>
+  <h1 class="fw-bold text-primary">Articles</h1>
 
-  <div id="articles">
+  <div id="articles" class="mb-2">
     <% @articles.each do |article| %>
-      <%= article.title %>
-      <p>
-        <%= link_to "Show this article", article %>
-      </p>
+      <article class="bg-card p-6 mb-2">
+        <header>
+          <p class="mb-0 small me-1 text-muted-foreground"><%= time_format(article.published_at) %></p>
+
+          <%= link_to article do %>
+            <h3 class="text-primary"><%= article.title %></h3>
+          <% end %>
+        </header>
+
+        <span>
+          <%= article.summary%>
+        </span>
+
+        <div class="d-flex gap-2">
+            <% if article.category.present? %>
+                <span class="badge bg-secondary text-xs me-1">
+                    <%= article.category.name%>
+                </span>
+            <% end %>
+            
+            <% article.tags.each do |tag|%>
+                <span class="badge text-xs border me-1 bg-hover-pink text-brown">
+                    <i class="bi bi-tag"></i>
+                    <%= tag.name%>
+                </span>
+            <% end %>
+        </div>
+      </article>
     <% end %>
   </div>
 

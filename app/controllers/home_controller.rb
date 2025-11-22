@@ -1,9 +1,9 @@
 class HomeController < ApplicationController
   def index
     @articles = if current_user.present?
-      Article.published
+      Article.with_category.with_tags.published
     else
-      Article.all
+      Article.with_category.with_tags.all
     end
   end
 

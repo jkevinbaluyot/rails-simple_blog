@@ -41,13 +41,13 @@
       <% if article.published? %>
         <div class="d-flex align-items-center mt-4 gap-2">
           <i class="bi bi-calendar text-muted-foreground"></i>
-          <span class="text-muted-foreground"><%= article.published_at %></span>
+          <span class="text-muted-foreground"><%= time_format(article.published_at) %></span>
         </div>
       <% else %>
         <div class="d-flex align-items-center mt-4 gap-2">
             <i class="bi bi-calendar text-muted-foreground"></i>
             <span class="fw-bold text-muted-foreground">Will Published at: </span>
-            <span class="text-muted-foreground"><%= article.published_at %></span>
+            <span class="text-muted-foreground"><%= time_format(article.published_at) %></span>
         </div>
       <% end %>
 
