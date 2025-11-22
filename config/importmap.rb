@@ -8,3 +8,4 @@ pin_all_from "app/javascript/controllers", under: "controllers"
 pin "@avo-hq/marksmith", to: "@avo-hq--marksmith.js" # @0.4.7
 pin "bootstrap", to: "bootstrap.min.js", preload: true
 pin "@popperjs/core", to: "popper.js", preload: true
+pin "bootstrap", to: "bootstrap.bundle.min.js"

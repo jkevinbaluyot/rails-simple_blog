@@ -41,8 +41,16 @@
 .bg-hover-pink{
     &:hover{
         background-color: $color-pink !important;
+        color: $color-light !important;
     }
 }
+
+.text-hover-pink{
+    &:hover{
+        color: $color-pink !important;
+    }
+}
+
 
 .text-xs {
     font-size: .75rem;
@@ -67,7 +75,7 @@
 }
 
 .pixel-border{
-    border: 2px dashed #0000;
+    border: 2px dashed #0000 !important;
 }
 
 .badge {

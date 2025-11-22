@@ -1,18 +1,18 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Articles" %>
 
-<h1>Articles</h1>
+<main class="container flex-grow-1">
+  <h1>Articles</h1>
 
-<div id="articles">
-  <% @articles.each do |article| %>
-    <%= article.title %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
+  <div id="articles">
+    <% @articles.each do |article| %>
+      <%= article.title %>
+      <p>
+        <%= link_to "Show this article", article %>
+      </p>
+    <% end %>
+  </div>
+
+  <% if current_user.present? %>
+    <%= link_to "New article", new_article_path %>
   <% end %>
-</div>
-
-<% if current_user.present? %>
-  <%= link_to "New article", new_article_path %>
-<% end %>
+</main>

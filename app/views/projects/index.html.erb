@@ -1,15 +1,24 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Projects" %>
 
-<h1>Projects</h1>
 
-<div id="projects">
-  <% @projects.each do |project| %>
-    <%= render project %>
-  <% end %>
-</div>
+<main class="container flex-grow-1">
+    <h1 class="fw-bold text-primary">Projects</h1>
+    <div class="mt-4">
+      <div class="rounded-lg">   
+        <div id="projects" class="row">
+          <% @projects.each do |project| %>
+            <div class="col-lg-6">
+              <%= render project %>
+            </div>
+          <% end %>
+        </div>
 
-<% if current_user.present? %>
-  <%= link_to "New project", new_project_path %>
-<% end %>
+        <% if current_user.present? %>
+          <div class='mt-4'>
+            <%= link_to "New project", new_project_path %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+</main>
+

@@ -20,6 +20,10 @@ class Article < ApplicationRecord
     published_at.present? && published_at <= Time.zone.now
   end
 
+  def summary
+    ActionView::Base.full_sanitizer.sanitize(content_html).truncate(200)
+  end
+
   private
 
   def generate_slug

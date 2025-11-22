@@ -22,7 +22,7 @@
         "@type": "WebPage",
         "@id": article_url(@article)
       },
-      "articleSection": @article.category.name,
+      "articleSection": @article&.category&.name,
       "keywords": @article.tags.map(&:name)
     }.to_json) %>
   </script>
@@ -32,14 +32,45 @@
   <%= article.meta_title%>
 <% end %>
 
-<div id="<%= dom_id article %>">
-  <article>
-    <h1><%= article.title %></h1>
-    <p><em><%= article.published_at %></em></p>
+<article id="<%= dom_id article %>">
+  <div class="bg-card p-6">
+    <header>
+      <h1 class="text-primary fw-bold"><%= article.title %></h1>
+    </header>
+    <div class="d-lg-flex align-items-center gap-4">
+      <% if article.published? %>
+        <div class="d-flex align-items-center mt-4 gap-2">
+          <i class="bi bi-calendar text-muted-foreground"></i>
+          <span class="text-muted-foreground"><%= article.published_at %></span>
+        </div>
+      <% else %>
+        <div class="d-flex align-items-center mt-4 gap-2">
+            <i class="bi bi-calendar text-muted-foreground"></i>
+            <span class="fw-bold text-muted-foreground">Will Published at: </span>
+            <span class="text-muted-foreground"><%= article.published_at %></span>
+        </div>
+      <% end %>
 
+      <% if article.category.present? %>
+        <div class="d-flex align-items-center mt-4 gap-2">
+          <i class="bi bi-folder2 text-muted-foreground"></i>
+          <%= render 'shared/article_category', name: article.category.name %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="p-6 bg-card my-4">
     <%== marksmithed article.content_html %>
+  </div>
 
-    <p><strong>Category:</strong> <%= article.category.name %></p>
-    <p><strong>Tags:</strong> <%= article.tags.map(&:name).join(", ") %></p>
-  </article>
-</div>
+  <div class="d-flex align-items-center gap-2 p-4 bg-card">
+    <span class="fw-bold text-muted-foreground">Tags:</span> 
+    <% article.tags.each do |tag| %>
+      <div class="badge text-xs border me-1 text-brown bg-hover-pink">
+        <i class="bi bi-tag"></i>
+        <%= tag.name %>
+      </div>
+    <%end %>
+  </div>
+</article>

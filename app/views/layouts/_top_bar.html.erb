@@ -18,8 +18,13 @@
                 <%= link_to 'Tags', tags_path, class: 'px-3 py-1 nav-link text-sm fw-bold' %>
             </li>
             <li class="nav-item">
-                <a class="px-3 py-1 nav-link text-sm fw-bold" href="#">Projects</a>
+                <%= link_to 'Projects', projects_path, class: 'px-3 py-1 nav-link text-sm fw-bold' %>
             </li>
+            <% if current_user.present? %>
+                <li class="nav-item">
+                    <%= link_to 'Admin', admin_root_path, class: 'px-3 py-1 nav-link text-sm fw-bold' %>
+                </li>
+            <% end  %>
         </ul>
 
         <button class="btn btn-outline-success">RSS</button>

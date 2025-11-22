@@ -1,12 +1,13 @@
 <% content_for :title, "Editing tag" %>
 
-<h1>Editing tag</h1>
+<main class="container flex-grow-1">
+  <h1>Editing tag</h1>
 
-<%= render "form", tag: @tag %>
+  <%= render "form", tag: @tag %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Show this tag", @tag %> |
-  <%= link_to "Back to tags", tags_path %>
-</div>
+  <div>
+    <%= link_to "Back to tags", tags_path %>
+  </div>
+</main>
