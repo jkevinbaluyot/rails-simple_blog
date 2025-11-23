@@ -21,9 +21,11 @@
         <div id="flash">
           <%= render 'shared/flash' %>
         </div>
-        
+
         <%= render partial: 'layouts/top_bar' %>
-        <%= yield %>
+        <main class="container">
+          <%= yield %>
+        </main>
       </div>
     </body>
   </html>
