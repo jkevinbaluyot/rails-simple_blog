@@ -16,12 +16,18 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= stylesheet_link_tag "marksmith" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     </head>
 
     <body>
-      <div id="flash">
-        <%= render 'shared/flash' %>
+      <div class="min-vh-100 d-flex flex-column">
+        <div id="flash">
+          <%= render 'shared/flash' %>
+        </div>
+
+        <%= render partial: 'layouts/top_bar' %>
+        <%= yield %>
+        <%= render partial: 'layouts/footer' %>
       </div>
-      <%= yield %>
     </body>
   </html>

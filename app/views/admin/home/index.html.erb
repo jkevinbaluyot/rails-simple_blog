@@ -1,18 +1,17 @@
-<h1>Home</h1>
+<div class="container">
+  <h1>Home</h1>
 
-<% if @web_setting %>
-  <p>Site Name: <strong><%= @web_setting.site_name %></strong></p>
+  <% if @web_setting %>
+    <p>Site Name: <strong><%= @web_setting.site_name %></strong></p>
 
-  <% if current_user %>
-    <%= link_to "Edit Web Settings", edit_web_setting_path(@web_setting), class: "edit-web-settings-link" %>
+
+    <%= link_to "Edit Web Settings", edit_web_setting_path(@web_setting), class: "edit-web-settings-link btn btn-primary my-1" %>
   <% end %>
-<% end %>
 
-<% if defined?(current_user) && current_user %>
-<% logout_path = respond_to?(:destroy_user_session_path) ? destroy_user_session_path : "/logout" %>
-<%= button_to "Logout", logout_path, method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: "logout-button" %>
-<% end %>
 
-<% if defined?(current_user) && current_user %>
-    <%= button_to "Edit Registration", admin_edit_registration_path, method: :get, class: "edit-registration-button" %>
-<% end %>
+  <%= button_to "Edit Registration", admin_edit_registration_path, method: :get, class: "edit-registration-button btn btn-primary my-1" %>
+
+  <% logout_path = respond_to?(:destroy_user_session_path) ? destroy_user_session_path : "/logout" %>
+
+  <%= button_to "Logout", logout_path, method: :delete, data: { confirm: "Are you sure you want to log out?" }, class: "logout-button btn btn-danger my-1" %>
+</div>

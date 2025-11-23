@@ -1,0 +1,17 @@
+@import 'variables';
+
+.nav-item{
+    .nav-link:hover{
+        background-color: $color-pink;
+        color: $color-white;
+    }
+}
+
+.pixel-border:hover{
+    border-color: $color-pink !important;
+    box-shadow: 0 0 10px 1px $color-pink !important;
+
+    h2{
+        text-decoration: underline;
+    }
+}

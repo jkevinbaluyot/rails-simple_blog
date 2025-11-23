@@ -17,6 +17,8 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem "cssbundling-rails"
+
 gem "dotenv"
 
 gem "devise"
@@ -67,3 +69,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "jsbundling-rails", "~> 1.3"
+gem "jquery-rails"
+gem "popper_js"
+gem "sassc-rails"
+gem "sassc"

@@ -1,11 +1,13 @@
 <% content_for :title, "New tag" %>
 
-<h1>New tag</h1>
+<main class="container flex-grow-1">
+  <h1>New tag</h1>
 
-<%= render "form", tag: @tag %>
+  <%= render "form", tag: @tag %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Back to tags", tags_path %>
-</div>
+  <div>
+    <%= link_to "Back to tags", tags_path %>
+  </div>
+</main>

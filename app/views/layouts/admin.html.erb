@@ -17,10 +17,15 @@
     <%= javascript_importmap_tags %>
     </head>
    <body>
-    <div id="flash">
-      <%= render 'shared/flash' %>
-    </div>
-    
-    <%= yield %>
+      <div class="min-vh-100 d-flex flex-column">
+        <div id="flash">
+          <%= render 'shared/flash' %>
+        </div>
+
+        <%= render partial: 'layouts/top_bar' %>
+        <main class="container">
+          <%= yield %>
+        </main>
+      </div>
     </body>
   </html>

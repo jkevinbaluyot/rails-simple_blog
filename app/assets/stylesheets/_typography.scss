@@ -1,0 +1,111 @@
+@import 'variables';
+
+.bg-muted\/50{
+    background-color: $color-linen;
+}
+
+.border{
+    border-color: $border-color !important;
+    border-width: 1px;
+}
+
+.border-2{
+    border-width: 2px;
+}
+
+.border-bottom-2 {
+    border-bottom-width: 2px;
+}
+
+.border-t {
+    border-top-width: 1px;
+}
+
+.border-dashed {
+    border-style: dashed;
+    border-color: $dashed-border-color;
+}
+
+.border-border\/50{
+    border-color: $border-color !important;
+}
+
+.bg-border{
+    background-color: $border-color !important;
+}
+
+.bg-card{
+    background-color: $card !important;
+}
+
+.bg-hover-pink{
+    &:hover{
+        background-color: $color-pink !important;
+        color: $color-light !important;
+    }
+}
+
+.text-hover-pink{
+    &:hover{
+        color: $color-pink !important;
+    }
+}
+
+
+.text-xs {
+    font-size: .75rem;
+    line-height: 1rem;
+}
+
+.text-sm{
+    font-size: .875rem;
+    line-height: 1.25rem;
+}
+
+.mb-8{ margin-bottom: 2rem; }
+.mt-12{ margin-top: 3rem; }
+
+
+.text-muted-foreground{
+    color: $color-muted-brown;
+}
+
+.text-brown{
+    color: $color-brown;
+}
+
+.pixel-border{
+    border: 2px dashed #0000 !important;
+}
+
+.badge {
+  border-radius: 0 !important;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.py-6 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.p-6 {
+    padding: 1.5rem;
+}
+
+.text-pink{
+    color: $color-pink;
+}
+
+
+.spacing-y{
+    > *:not(:first-child) {
+        margin-top: 1rem;
+    }
+}
+
+.field{
+    margin-bottom: 1rem;
+}

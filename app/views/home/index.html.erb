@@ -1,0 +1,14 @@
+<main class="container flex-grow-1">
+    <div class="border-2 border-dashed p-4">
+        <h1 class="text-center font-bold text-uppercase fw-bold text-primary mb-0">The Bitwise Bulletin</h1>
+        <p class="text-center text-muted-foreground mt-2 mb-0 text-muted-foreground">Your Daily Dose of Development & Design</p>
+    </div>
+
+    <div class="mt-4">
+        <% array = (0..10).to_a %>
+        <% @articles.each_with_index do |article, index| %>
+           <% last_index = array.length - 1 == index %>
+           <%= render "article_card", article: article, last_index: last_index %>
+        <% end %>
+    </div>
+</main>

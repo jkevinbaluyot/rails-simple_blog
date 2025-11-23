@@ -1,0 +1,38 @@
+<article class="pixel-border p-4 cursor-pointer">
+    <header>
+        <div class="d-flex align-items-center">
+            <p class="mb-0 small me-1 text-muted-foreground"><%= time_format(article.published_at) %></p>
+
+            <div class="d-flex gap-2">
+                <% if article.category.present? %>
+                    <span class="badge bg-secondary text-xs me-1">
+                        <%= article.category.name%>
+                    </span>
+                <% end %>
+                
+                <% article.tags.each do |tag|%>
+                    <span class="badge text-xs border me-1 bg-hover-pink text-brown">
+                        <i class="bi bi-tag"></i>
+                        <%= tag.name%>
+                    </span>
+                <% end %>
+            </div>
+        </div>
+
+        <%= link_to article do %>
+            <h2 class="text-primary fw-bold mt-2">
+                
+                <%= article.title %>
+            </h2>
+        <% end %>
+    <header>
+
+    <p class="text-muted-foreground mt-4">
+        <%= article.summary%>
+    </p>
+
+</article>
+
+<% if last_index == false %>
+    <div style="height: 1px;" class="mt-12 bg-border w-100"></div>
+<% end %>
