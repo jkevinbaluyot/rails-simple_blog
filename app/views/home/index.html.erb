@@ -1,3 +1,5 @@
+<%= canonical_tag(root_url) %>
+
 <main class="container flex-grow-1">
     <div class="border-2 border-dashed p-4">
         <h1 class="text-center font-bold text-uppercase fw-bold text-primary mb-0">The Bitwise Bulletin</h1>
@@ -11,6 +13,10 @@
            <%= render "article_card", article: article, last_index: last_index %>
         <% end %>
     </div>
+
+    <% if current_user.present? %>
+        <%= link_to "New article", new_article_path %>
+    <% end %>
 
     <%= pagy_bootstrap_nav(@pagy).html_safe %>
 </main>
