@@ -1,0 +1,23 @@
+.pagination{
+    margin-top: 1rem;
+
+    .page-item.prev,
+    .page-item.next{
+        background-color: transparent;
+        border: 1px solid $color-linen;
+
+        a{
+         background-color: transparent;   
+        }
+    }
+
+    .page-item.disabled{
+        opacity: 0.5;
+    }
+}
+
+.page-item:not(.active){
+    .page-link{
+        background-color: transparent !important;
+    }
+}

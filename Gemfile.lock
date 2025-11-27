@@ -175,6 +175,7 @@ GEM
     nokogiri (1.18.9-x86_64-linux-gnu)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (9.4.0)
     parallel (1.27.0)
     parser (3.3.9.0)
       ast (~> 2.4.1)
@@ -349,6 +350,7 @@ DEPENDENCIES
   jquery-rails
   jsbundling-rails (~> 1.3)
   marksmith
+  pagy
   pg (~> 1.1)
   popper_js
   puma (>= 5.0)

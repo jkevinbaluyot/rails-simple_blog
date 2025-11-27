@@ -11,6 +11,7 @@ class Article < ApplicationRecord
   validate :slug_must_be_valid
 
   scope :published, -> { where.not(published_at: nil).where("published_at <= ?", Time.zone.now) }
+  scope :by_published_at, -> { order(published_at: :desc) }
   scope :with_tags, -> { includes(:tags) }
   scope :with_category, -> { includes(:category) }
 
