@@ -23,5 +23,13 @@ class HomeController < ApplicationController
   end
 
   def archive
+    @current_year = if params[:year].present?
+      params[:year].to_i
+    else
+      Time.now.year
+    end
+    @years = Article.get_years
+
+    @articles = Article.by_year(@current_year).published
   end
 end

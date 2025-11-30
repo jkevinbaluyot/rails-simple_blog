@@ -3,4 +3,17 @@
     <div class="mt-4">
         <%= render "archive_year" %>
     </div>
+    <div class="mt-4">
+        <ul class="list-unstyled d-flex align-items-center gap-4">
+            <% @years.each do |year| %>
+                <li>
+                    <% if year == @current_year%>
+                        <%= year%>
+                    <% else %>
+                        <%= link_to year, archive_path(year: year) %>
+                    <% end %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
 </main>

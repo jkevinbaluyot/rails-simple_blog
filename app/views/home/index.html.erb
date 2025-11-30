@@ -7,9 +7,8 @@
     </div>
 
     <div class="mt-4">
-        <% array = (0..10).to_a %>
         <% @articles.each_with_index do |article, index| %>
-           <% last_index = array.length - 1 == index %>
+           <% last_index = @articles.length - 1 == index %>
            <%= render "article_card", article: article, last_index: last_index %>
         <% end %>
     </div>

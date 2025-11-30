@@ -1,18 +1,16 @@
 <div class="rounded-lg border bg-card">
     <div class="p-6 d-flex align-items-center">
-        <h3 class="fw-bold text-pink">2023</h3>
+        <h3 class="fw-bold text-pink"><%= @current_year%></h3>
     </div>
 
     <div class="p-6 pt-0">
         <ul class="list-unstyled spacing-y">
-            <li class="d-flex flex-row justify-content-between">
-                <a class="cursor-pointer" >A Look Back at the Commodore 64</a>
-                <span>November 25</span>
-            <li>
-            <li class="d-flex flex-row justify-content-between">
-                <a class="cursor-pointer" >A Look Back at the Commodore 64</a>
-            <span>November 25</span>
-            <li>
+            <% @articles.each_with_index do |article| %>
+                <li class="d-flex flex-row justify-content-between">
+                    <%= link_to article.title, article, class: 'cursor-pointer'%>
+                    <span><%= time_custom_format(article.published_at)%></span>
+                <li>
+            <% end %>
         </ul>
     </div>
 </div>
