@@ -1,11 +1,13 @@
 <% content_for :title, "New project" %>
+<main class="container flex-grow-1">
+  <h1>New project</h1>
 
-<h1>New project</h1>
+  <%= render "form", project: @project %>
 
-<%= render "form", project: @project %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Back to projects", projects_path %>
-</div>
+  <div>
+    <%= link_to "Back to projects", projects_path %>
+  </div>
+</main>
