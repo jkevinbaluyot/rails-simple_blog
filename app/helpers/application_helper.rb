@@ -19,4 +19,9 @@ module ApplicationHelper
 
     time.strftime("%B %d ")
   end
+
+  def canonical_url(url = nil)
+    url ||= request.original_url.split("?").first
+    tag.link(rel: "canonical", href: url)
+  end
 end

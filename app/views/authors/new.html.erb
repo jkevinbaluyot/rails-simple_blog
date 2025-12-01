@@ -1,11 +1,13 @@
 <% content_for :title, "New author" %>
 
-<h1>New author</h1>
+<main class="container flex-grow-1">
+  <h1>New author</h1>
 
-<%= render "form", author: @author %>
+  <%= render "form", author: @author %>
 
-<br>
+  <br>
 
-<div>
-  <%= link_to "Back to authors", authors_path %>
-</div>
+  <div>
+    <%= link_to "Back to authors", authors_path %>
+  </div>
+</main>
