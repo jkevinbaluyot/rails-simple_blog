@@ -24,7 +24,7 @@ gem "dotenv"
 gem "devise"
 gem "rotp" # For generating and verifying TOTP codes
 gem "rqrcode" # For generating QR codes
-gem "friendly_id", "~> 5.5.0"
+gem "friendly_id", "~> 5.6.0"
 gem "marksmith"
 gem "commonmarker"
 # Use Redis adapter to run Action Cable in production
