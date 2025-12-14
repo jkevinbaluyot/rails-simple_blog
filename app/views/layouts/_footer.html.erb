@@ -1,5 +1,9 @@
 <footer class="text-muted-foreground py-6 border-border/50 border-t">
     <div class="text-center mx-auto px-4">
-        <p><span>© 2025</span> Bitwise Blog. All rights reserved.</p>
+        <p><span>© <%= @web_setting&.site_year%></span> <%= @web_setting&.site_name%>. All rights reserved.</p>
+
+        <% if @web_setting.main_domain_link.present? && @web_setting.main_domain_name.present? %>
+            <span>Powered by <%= link_to @web_setting.main_domain_name, @web_setting.main_domain_link %></span>
+        <% end %>
     </div>
 </footer>

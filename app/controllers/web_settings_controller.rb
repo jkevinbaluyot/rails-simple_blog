@@ -62,6 +62,6 @@ class WebSettingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def web_setting_params
-      params.require(:web_setting).permit(:site_name)
+      params.require(:web_setting).permit(:site_name, :site_description, :site_year, :main_domain_link, :main_domain_name)
     end
 end

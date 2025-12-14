@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_12_14_061204) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_14_063702) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -164,6 +164,10 @@ ActiveRecord::Schema[7.2].define(version: 2025_12_14_061204) do
     t.string "site_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "site_description"
+    t.string "site_year", default: "2025"
+    t.string "main_domain_name"
+    t.string "main_domain_link"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

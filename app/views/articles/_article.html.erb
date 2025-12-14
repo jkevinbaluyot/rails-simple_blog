@@ -1,6 +1,5 @@
 
 <% content_for(:head) do %>
-  <meta name="description" content="<%= strip_tags(article.meta_description).squish %>">
   <meta name="keywords" content="<%= strip_tags(article.meta_keywords).squish %>">
   
   <script type="application/ld+json">
@@ -14,7 +13,7 @@
       },
       "publisher": {
         "@type": "Organization",
-        "name": "", # TODO: Add your site name here
+        "name": @web_setting.site_name
       },
       "datePublished": @article.published_at&.iso8601,
       "dateModified": @article.updated_at&.iso8601,
@@ -29,8 +28,10 @@
 <% end %>
 
 <% content_for(:title) do %>
-  <%= article.meta_title %>
+  <%= article.title %>
 <% end %>
+
+<% content_for :meta_description, article.meta_description %>
 
 <article id="<%= dom_id article %>">
   <div class="bg-card p-6">
