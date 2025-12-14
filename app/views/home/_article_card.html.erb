@@ -5,16 +5,20 @@
 
             <div class="d-flex gap-2">
                 <% if article.category.present? %>
-                    <span class="badge bg-secondary text-xs me-1">
-                        <%= article.category.name%>
-                    </span>
+                    <%= link_to root_path(category_id: article.category_id) do %>
+                        <span class="badge bg-secondary text-xs me-1">
+                            <%= article.category.name %>
+                        </span>
+                    <%end%>
                 <% end %>
                 
                 <% article.tags.each do |tag|%>
-                    <span class="badge text-xs border me-1 bg-hover-pink text-brown">
-                        <i class="bi bi-tag"></i>
-                        <%= tag.name%>
-                    </span>
+                    <%= link_to root_path(tag_id: tag.id) do%>
+                        <span class="badge text-xs border me-1 bg-hover-pink text-brown">
+                            <i class="bi bi-tag"></i>
+                            <%= tag.name %>
+                        </span>
+                    <% end %>
                 <% end %>
             </div>
         </div>

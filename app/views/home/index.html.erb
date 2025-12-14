@@ -1,14 +1,22 @@
 <main class="container flex-grow-1">
     <div class="border-2 border-dashed p-4">
-        <h1 class="text-center font-bold text-uppercase fw-bold text-primary mb-0">The Bitwise Bulletin</h1>
-        <p class="text-center text-muted-foreground mt-2 mb-0 text-muted-foreground">Your Daily Dose of Development & Design</p>
+        <div class="d-flex align-items-center justify-content-center">
+            <%= image_tag 'favicon.ico', class: 'img-fluid'%>
+            <h1 class="text-center font-bold text-uppercase fw-bold text-primary mb-0"><%= @web_setting.site_name%></h1>
+        </div>
+        <p class="text-center text-muted-foreground mt-2 mb-0 text-muted-foreground"><%= @web_setting.site_description%></p>
     </div>
 
-    <div class="mt-4">
-        <% array = (0..10).to_a %>
+    <div class="my-4">
         <% @articles.each_with_index do |article, index| %>
-           <% last_index = array.length - 1 == index %>
+           <% last_index = @articles.length - 1 == index %>
            <%= render "article_card", article: article, last_index: last_index %>
         <% end %>
     </div>
+
+    <% if current_user.present? %>
+        <%= link_to "New article", new_article_path %>
+    <% end %>
+
+    <%= pagy_bootstrap_nav(@pagy).html_safe %>
 </main>

@@ -11,31 +11,32 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.label :url, style: "display: block" %>
-    <%= form.text_field :url %>
-  </div>
-
-
-  <h3>Select Technologies:</h3>
-  <%= form.collection_check_boxes(:technology_ids, Technology.all, :id, :title) do |cb| %>
+  <div class="mb-3">
     <div>
-      <%= cb.check_box %>
-      <%= cb.label %>
+      <%= form.label :title, style: "display: block" %>
+      <%= form.text_field :title, class: 'form-control' %>
     </div>
-  <% end %>
 
+    <div>
+      <%= form.label :description, style: "display: block" %>
+      <%= form.text_area :description, class: 'form-control' %>
+    </div>
+
+    <div>
+      <%= form.label :url, style: "display: block" %>
+      <%= form.text_field :url, class: 'form-control' %>
+    </div>
+
+
+    <h3>Select Technologies:</h3>
+    <%= form.collection_check_boxes(:technology_ids, Technology.all, :id, :title) do |cb| %>
+      <div class="form-check">
+        <%= cb.check_box(class: "form-check-input")  %>
+        <%= cb.label(class: "form-check-label") %>
+      </div>
+    <% end %>
+  </div>
   <div>
-    <%= form.submit %>
+    <%= form.submit(class: 'btn btn-success') %>
   </div>
 <% end %>

@@ -1,6 +1,5 @@
 
 <% content_for(:head) do %>
-  <meta name="description" content="<%= strip_tags(article.meta_description).squish %>">
   <meta name="keywords" content="<%= strip_tags(article.meta_keywords).squish %>">
   
   <script type="application/ld+json">
@@ -14,7 +13,7 @@
       },
       "publisher": {
         "@type": "Organization",
-        "name": "", # TODO: Add your site name here
+        "name": @web_setting.site_name
       },
       "datePublished": @article.published_at&.iso8601,
       "dateModified": @article.updated_at&.iso8601,
@@ -28,9 +27,11 @@
   </script>
 <% end %>
 
-<% content_for(:meta_title) do %>
-  <%= article.meta_title%>
+<% content_for(:title) do %>
+  <%= article.title %>
 <% end %>
+
+<% content_for :meta_description, article.meta_description %>
 
 <article id="<%= dom_id article %>">
   <div class="bg-card p-6">
@@ -52,12 +53,21 @@
       <% end %>
 
       <% if article.category.present? %>
-        <div class="d-flex align-items-center mt-4 gap-2">
-          <i class="bi bi-folder2 text-muted-foreground"></i>
-          <%= render 'shared/article_category', name: article.category.name %>
-        </div>
+        <%= link_to root_path(category_id: article.category_id), class: 'text-decoration-none' do%>
+          <div class="d-flex align-items-center mt-4 gap-2">
+            <i class="bi bi-folder2 text-muted-foreground"></i>
+            <%= render 'shared/article_category', name: article.category.name %>
+          </div>
+        <%end%>
       <% end %>
     </div>
+
+    <% if article.author.present? %>
+      <div class="d-flex align-items-center gap-2">
+          <i class="bi bi-person text-muted-foreground"></i>
+          <span class="text-muted-foreground"> <%= article.author.name %> </span>
+        </div>
+    <% end %>
   </div>
 
   <div class="p-6 bg-card my-4">
@@ -67,10 +77,12 @@
   <div class="d-flex align-items-center gap-2 p-4 bg-card">
     <span class="fw-bold text-muted-foreground">Tags:</span> 
     <% article.tags.each do |tag| %>
-      <div class="badge text-xs border me-1 text-brown bg-hover-pink">
-        <i class="bi bi-tag"></i>
-        <%= tag.name %>
-      </div>
+      <%= link_to root_path(tag_id: tag.id) do%>
+        <div class="badge text-xs border me-1 text-brown bg-hover-pink">
+          <i class="bi bi-tag"></i>
+          <%= tag.name %>
+        </div>
+      <%end%>
     <%end %>
   </div>
 </article>

@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:meta_title) ? yield(:meta_title) : @web_setting&.site_name %></title>
+    <title><%= content_for(:title) ? yield(:title) + ' | ' + @web_setting&.site_name : @web_setting&.site_name %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= yield :head %>
 
+    <meta name="description" content="<%= content_for?(:meta_description) ? yield(:meta_description) : @web_setting&.site_description %>">
+    <%= yield :head %>
+    <%= canonical_url %>
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+
+    <%= favicon_link_tag "favicon.ico", type: "image/svg+xml" %>
+    <%= favicon_link_tag "favicon.png", type: "image/png" %>
+    <%= favicon_link_tag "favicon.png", rel: "apple-touch-icon" %>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= stylesheet_link_tag "marksmith" %>
-    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-    </head>
+  </head>
 
-    <body>
-      <div class="min-vh-100 d-flex flex-column">
-        <div id="flash">
-          <%= render 'shared/flash' %>
-        </div>
-
-        <%= render partial: 'layouts/top_bar' %>
-        <%= yield %>
-        <%= render partial: 'layouts/footer' %>
+  <body>
+    <div class="min-vh-100 d-flex flex-column">
+      <div id="flash">
+        <%= render 'shared/flash' %>
       </div>
-    </body>
-  </html>
+
+      <%= render partial: 'layouts/top_bar' %>
+      <%= yield %>
+      <%= render partial: 'layouts/footer' %>
+    </div>
+  </body>
+</html>

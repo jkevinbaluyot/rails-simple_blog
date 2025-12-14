@@ -16,6 +16,27 @@
     <%= form.text_field :site_name, class: 'form-control' %>
   </div>
 
+
+  <div class="field">
+    <%= form.label :site_description, style: "display: block" %>
+    <%= form.text_area :site_description, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :site_year, style: "display: block" %>
+    <%= form.text_field :site_year, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :main_domain_name, style: "display: block" %>
+    <%= form.text_field :main_domain_name, class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :main_domain_link, style: "display: block" %>
+    <%= form.text_field :main_domain_link, class: 'form-control' %>
+  </div>
+
   <div>
     <%= form.submit "Submit", class: 'btn btn-success' %>
   </div>

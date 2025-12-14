@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :authors, except: [ :show ]
   resources :categories, except: [ :show ]
   resources :tags, except: [ :show ]
-  resources :articles
+  resources :articles, except: [ :index ]
   devise_for :users,
     path: "admin",
     controllers: {
