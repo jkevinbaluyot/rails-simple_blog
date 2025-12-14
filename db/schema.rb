@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_11_02_062028) do
+ActiveRecord::Schema[7.2].define(version: 2025_12_14_061204) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,7 +57,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_02_062028) do
     t.index ["author_id"], name: "index_articles_on_author_id"
     t.index ["category_id"], name: "index_articles_on_category_id"
     t.index ["published_at"], name: "index_articles_on_published_at"
-    t.index ["slug"], name: "index_articles_on_slug"
+    t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 
   create_table "articles_tags", force: :cascade do |t|
