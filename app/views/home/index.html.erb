@@ -1,6 +1,9 @@
 <main class="container flex-grow-1">
     <div class="border-2 border-dashed p-4">
-        <h1 class="text-center font-bold text-uppercase fw-bold text-primary mb-0"><%= @web_setting.site_name%></h1>
+        <div class="d-flex align-items-center justify-content-center">
+            <%= image_tag 'favicon.ico', class: 'img-fluid'%>
+            <h1 class="text-center font-bold text-uppercase fw-bold text-primary mb-0"><%= @web_setting.site_name%></h1>
+        </div>
         <p class="text-center text-muted-foreground mt-2 mb-0 text-muted-foreground"><%= @web_setting.site_description%></p>
     </div>
 
