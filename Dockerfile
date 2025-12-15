@@ -28,16 +28,17 @@ FROM base AS build
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
       build-essential \
+      curl \
       git \
       libpq-dev \
       pkg-config \
       libvips-dev \
-      sass \
-      postcss \
-      postcss-cli \ 
-      autoprefixer \
-      ca-certificates && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+      libjemalloc2 \
+      postgresql-client \
+      ca-certificates \
+      nodejs \
+      npm && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 ########################################
 # Install Node.js 22 + npm
