@@ -6,3 +6,4 @@ AUTHOR_NAME=Name Here
 SITE_NAME=Site name here
 
 RAILS_SERVE_STATIC_FILES='' #Put this at test and production. Ignore at development
+SIMPLE_BLOG_DATABASE_PASSWORD=''
