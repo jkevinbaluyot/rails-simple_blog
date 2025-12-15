@@ -31,6 +31,11 @@ RUN apt-get update -qq && \
       git \
       libpq-dev \
       pkg-config \
+      libvips-dev \
+      sass \
+      postcss \
+      postcss-cli \ 
+      autoprefixer \
       ca-certificates && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
