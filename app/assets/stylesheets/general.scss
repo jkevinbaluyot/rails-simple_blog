@@ -1,8 +1,6 @@
-@import 'variables';
-
 @font-face {
   font-family: "VT323";
-  src: font-url("VT323-Regular.ttf") format("truetype");
+  src: url("VT323-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
