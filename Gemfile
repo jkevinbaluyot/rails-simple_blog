@@ -77,3 +77,7 @@ gem "jquery-rails"
 gem "popper_js"
 gem "sassc-rails"
 gem "sassc"
+
+gem "dockerfile-rails", ">= 1.7", :group => :development
+
+gem "aws-sdk-s3", "~> 1.207", :require => false
