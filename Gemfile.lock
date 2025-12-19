@@ -358,7 +358,6 @@ DEPENDENCIES
   rotp
   rqrcode
   rubocop-rails-omakase
-  sassc
   sassc-rails
   selenium-webdriver
   sprockets-rails
